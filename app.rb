@@ -16,7 +16,12 @@ end
 
 get "/news" do
   # do everything else
-    results = App.search(params["q"])
-    lat_long = results.first.coordinates # => [lat, long]
-    "#{lat_long[0]} #{lat_long[1]}"    
+    results = Geocoder.search(params["location"])
+    @lat_long = results.first.coordinates # => [lat, long]
+
+    # lat = lat_long[0]
+    # long = lat_long[1]
+    # "#{lat_long[0]} #{lat_long[1]}"  
+    # puts @lat_long
+ 
 end
