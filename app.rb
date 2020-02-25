@@ -30,25 +30,6 @@ get "/news" do
     @forecast = ForecastIO.forecast(@lat,@long).to_hash
 
     @top_headlines = pp news
-
-    # pp @top_headlines
-
-    # puts @forecast["currently"]["summary"]    
-
-    # current_summary = forecast["currently"]["summary"]
-    # current_temp = forecast["currently"]["temperature"]
-    
-    # puts "Today it is #{forecast["currently"]["temperature"]} and #{forecast["currently"]["temperature"]}"     
-
-    # forecast_array = forecast["daily"]["data"]
-    
-    # for weather_for_the_day in forecast_array
-    # puts "A high temperature of #{weather_for_the_day["temperatureHigh"]} and #{weather_for_the_day["summary"]}."
-    # end
-
-    # "#{@lat_long[0]} #{@lat_long[1]}"  
-    # puts @lat_long
-
     
     view "news"
 end

@@ -1,0 +1,25 @@
+body {
+
+    /* Default font */
+    font-family: 'Quicksand', sans-serif;
+}
+  
+/* Headline overrides */
+
+  h1, h3 {
+    font-family: 'Quicksand', sans-serif;
+    color: purple;
+  }
+
+  h2, h4 {
+    font-family: sans-serif;
+    color: green;
+  }
+
+/* Navbar */
+
+  .navbar-brand {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    color: purple;
+  }

@@ -7,7 +7,7 @@
 
     <!-- Google Fonts -->
     <!-- Swap out "Roboto" for the font(s) you want to use -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&sans-serif=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" crossorigin="anonymous">
@@ -19,44 +19,63 @@
     <link rel="stylesheet" href="/styles.css">
 
     <title>News</title>
+
+    <nav class="navbar-brand">
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Back to Homepage</a>
+            </li>
+        </ul>
+
+    </nav>
+
   </head>
   <body>
 
-    <div class="container mt-5">
-        <h1>Map</h1>
-        <h2><%= @lat_long %></h2>
-        <iframe
-            width="600"
-            height="450"
-            frameborder="0" style="border:0"
-            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
-            &q=<%= @lat %>,<%= @long %>&zoom=6" allowfullscreen>
-      </iframe>
-      <p>
-        <a href="/" class="btn btn-primary">Go again!</a>
-      </p>
-    </div>
-    </div>
+    <div class="container">
+        <div class="col-sm-8">
+            <h1>Map</h1>
+            <h2><%= @lat_long %></h2>
+            <iframe
+                width="600"
+                height="450"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
+                &q=<%= @lat %>,<%= @long %>&zoom=6" allowfullscreen>
+            </iframe>
+            <p>
+                <a href="/" class="btn btn-primary">Go again!</a>
+            </p>
 
-    <div>
-        <h1>Weather</h1>
-        <h2><%= @forecast['currently']['summary'] %> </h2>
-        <h2><%="Current temperature is #{@forecast["currently"]["temperature"]} degrees" %> </h2>
-    </div>
+    <div></div>
 
-    <div>
-        <h1>News</h1>
-        <h2>Top Headlines</h2>
-    </div>
-
-    # use loop
-
-    <% for headline in @top_headlines["articles"] %>
-            <div class="col-sm-12">
-                
-                <h2><%= headline["title"] %></h2>
+    <div class="jumbotron">
+        <div class="row"</div>
+            <div class="col-sm-4">
+                <h1>Today's Weather:</h1>
             </div>
+            <div class="col-sm-4">
+                <h4><%= @forecast['currently']['summary'] %> </h4>
+            </div>
+            <div class="col-sm-4">
+                <h4><%="Current temp: #{@forecast["currently"]["temperature"]} F" %> </h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Today's Top Headlines</h1>
+    </div>
+
+    <div class="container">
+        <% for headline in @top_headlines["articles"] %>
+                <div class="col-sm-12">
+                    <a href="<%= headline["url"] %>"><%= headline["title"] %></a>
+                </div>
         <% end %>
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
