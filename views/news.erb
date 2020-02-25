@@ -23,20 +23,40 @@
   <body>
 
     <div class="container mt-5">
-        <h1>News</h1>
+        <h1>Map</h1>
         <h2><%= @lat_long %></h2>
         <iframe
             width="600"
             height="450"
             frameborder="0" style="border:0"
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
-            &q=<%= @lat_long %>&zoom=6" allowfullscreen>
+            &q=<%= @lat %>,<%= @long %>&zoom=6" allowfullscreen>
       </iframe>
       <p>
         <a href="/" class="btn btn-primary">Go again!</a>
       </p>
     </div>
     </div>
+
+    <div>
+        <h1>Weather</h1>
+        <h2><%= @forecast['currently']['summary'] %> </h2>
+        <h2><%="Current temperature is #{@forecast["currently"]["temperature"]} degrees" %> </h2>
+    </div>
+
+    <div>
+        <h1>News</h1>
+        <h2>Top Headlines</h2>
+    </div>
+
+    # use loop
+
+    <% for headline in @top_headlines["articles"] %>
+            <div class="col-sm-12">
+                
+                <h2><%= headline["title"] %></h2>
+            </div>
+        <% end %>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
